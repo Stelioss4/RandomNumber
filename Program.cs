@@ -37,18 +37,20 @@
                         continue;
                     }
 
-                  
+
                 }
                 while (true)
                 {
 
                     Console.WriteLine($"Now please select how close you want to reach until you have the signal (Ooh!! So close!) , you can go up to {SO_CLOSE_MAX}!");
-                    soClosehigh = Convert.ToInt32(Console.ReadLine());
-                    if (soClosehigh > 5)
+                    if (int.TryParse(Console.ReadLine(), out soClosehigh) && soClosehigh <= 5)
+                    {
+                        break;
+                    }
+                    else
                     {
                         Console.WriteLine($"Sorry you can only go up to {SO_CLOSE_MAX}");
                     }
-                    else { break; }
 
                 }
                 Console.WriteLine($"Please write a number from {LOW_NUMBER} to {HIGH_NUMBER}!!");
@@ -59,8 +61,16 @@
                 {
 
                     Console.WriteLine($"try {LOW_NUMBER + i}/{tries} ");
-                    yourNumber = Convert.ToInt32(Console.ReadLine());
-
+                   if (int.TryParse(Console.ReadLine(), out yourNumber) && yourNumber <= HIGH_NUMBER && yourNumber >= LOW_NUMBER)
+                    {
+                        Console.WriteLine($"You entered {yourNumber}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Invalid input. Please enter a number between {LOW_NUMBER} and {HIGH_NUMBER}");
+                        i--;
+                        continue;
+                    }
                     if (randomNumber <= yourNumber + soClosehigh && yourNumber + SO_CLOSE_LOW <= randomNumber || randomNumber >= yourNumber - soClosehigh && yourNumber - SO_CLOSE_LOW >= randomNumber)
                     {
                         Console.WriteLine("Ooh!! So close!");
