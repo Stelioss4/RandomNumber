@@ -14,7 +14,7 @@
 
 
 
-                string Result = "";
+                var Result = 0;
                 int yourNumber = 0;
                 int randomNumber = 0;
                 int tries = 0;
@@ -96,20 +96,20 @@
                 {
                     Console.WriteLine("Sorry you lost.. Maybe next time!");
                 }
-                Console.WriteLine($"Do you want to play again? Please presse (Y) for 'yes' to continue , or anything else to leave the game!");
 
-                Result = Console.ReadLine();
+                Console.WriteLine("Do you want to play again?");
+                Console.WriteLine($"Press (SPACE) to play or anything else to quit. . .");
+                Console.WriteLine("********************************************************\n");
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
 
-                if (Result == "Y" || Result == "y")
+                if(keyInfo.Key == ConsoleKey.Spacebar)
                 {
-                    Console.WriteLine("NICE! Good Luck!!");
+                    continue;
                 }
                 else
                 {
                     break;
-                }
-
-
+                }   
             }
             Console.WriteLine("OK!! See you later!!");
 
